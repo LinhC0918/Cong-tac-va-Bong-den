@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cong tac  - Bong den</title>
+</head>
+<body>
+    <script>
+        function SwitchButton() {
+            this.switchOn = function () {
+                this.status = 'ON';
+            };
+            this.switchOff = function () {
+                this.status = 'OFF';
+            };
+            this.connectToLamp = function (lamp) {
+                this.lamp = lamp;
+                console.log('Connected to ' + this.lamp);
+            }
+            this.statusOfSwitch = function () {
+                console.log('Switch ' + this.status);
+                return this.status;
+            }
+        }
+        function ElectricLamp() {
+            this.name = 'ElectricLamp';
+            this.statusOfLamp = function () {
+                this.status = switchButton.statusOfSwitch();
+                console.log('Lighting ' + this.status);
+            }
+        }
+        var switchButton = new SwitchButton();
+        var lamp = new ElectricLamp();
+        switchButton.connectToLamp(lamp.name);
+        switchButton.switchOn();
+        switchButton.statusOfSwitch();
+        lamp.statusOfLamp();
+        switchButton.switchOff();
+        switchButton.statusOfSwitch();
+        lamp.statusOfLamp();
+    </script>
+</body>
+</html>
